@@ -1,0 +1,100 @@
+
+{% include 'navbar.html' %}
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>StudyBud</title>
+    <meta name='viewport' content='width=device-width, initical-scale=1'>
+    
+    <style>
+        
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        
+        a:hover{
+            color: white;
+            background-color: black;
+        }
+       
+        a:visited{
+            background-color: lightslategrey;
+        }
+        
+        
+        a:active{
+            background-colour: lightslategrey;
+        }
+        .btn{
+            background-color: slategrey;
+            padding: 6px;
+            border:none;
+            cursor=pointer;
+            font-size=18px;
+            border-radius=4px;
+
+
+
+        }
+        
+
+    </style>
+</head>
+
+<body>
+    
+    
+    
+    <div class="container" id="cont1">
+
+
+
+    
+    <div>
+        {% for room in rooms %}
+            <div>
+                {% if request.user == room.host %}
+                <a href="{% url 'update-room' room.id %}" class="btn" > Edit</a>
+                <a href=" {% url 'delete-room' room.id %}" class="btn" > Delete</a>
+                {% endif%}
+                
+                <a href="{% url 'user-profile' room.host.id %}" class="btn">@{{room.host.username}}</a>
+                <h5>{{room.id}} -- <a href="{% url 'room' room.id %}" class="btn"> {{room.name}}</a></h5>
+                <small>{{room.topic.name}}</small>
+                <hr>
+            </div>
+        {%  endfor %}
+    </div>
+   
+
+   
+   
+
+
+</body>
+    </div>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    a:hover{
+        color: white;
+        background-color: slategrey;
+    }
+   
+    a:visited{
+        background-color: lightslategrey;
+    }
+    
+    
+    a:active{
+        background-colour: lightslategrey;
+    }
+    .btn{
+        background-color: blue;
+        padding: 6px;
+        border:none;
+        cursor=pointer;
+        font-size=18px;
+        border-radius=4px;
+    }
+
+
+</style>
+
+<div class="container" id="cont1">
+
+
+       <h3> Browse Topics </h3>
+       <hr>
+       <div>
+             <a href="{%url 'home' %}" class="btn"> All</a>
+             <hr>
+        </div>
+
+        {% for topic in topics%}
+        <div>
+             <a href="{%url 'home' %}?q={{topic.name}}"  class="btn"> {{topic.name}}</a>
+             <hr>
+        </div>
+    
+
+
+        {%endfor%}
+</div>

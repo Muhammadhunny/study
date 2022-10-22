@@ -1,0 +1,63 @@
+
+{% extends 'main.html' %}
+
+{% block content%}
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    a:hover{
+        color: white;
+        background-color: slategrey;
+    }
+   
+    a:visited{
+        background-color: slategrey;
+    }
+    
+    
+    a:active{
+        background-colour: slategrey;
+    }
+    .btn{
+        background-color: slategrey;
+        padding: 6px;
+        border:none;
+        cursor=pointer;
+        font-size=18px;
+        border-radius=4px;
+    }
+
+
+</style>
+
+<div class="container" id="cont1">
+ <div class="home-container">
+    <div>
+        {% include 'base/topics_component.html'%}
+    </div>
+    
+    
+    <div>
+        <h5>{{room_count}} rooms available</h5>
+        <a href="{% url 'create-room'%}" class="btn"> Create Room</a>
+        {% include 'base/feed_component.html'%}
+    
+
+    </div>
+
+    <div>
+       {% include  'base/activity_component.html' %}
+    </div>
+
+    
+ </div>
+</div>
+
+{% endblock%}

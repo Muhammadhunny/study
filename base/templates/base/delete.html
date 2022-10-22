@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% block content%}
+<style>
+    .room-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    a:hover{
+        color: white;
+        background-color: black;
+    }
+   
+    a:visited{
+        background-color: lightslategrey;
+    }
+    
+    
+    a:active{
+        background-colour: lightslategrey;
+    }
+    .btn{
+        background-color: slategrey;
+        padding: 6px;
+        border:none;
+        cursor=pointer;
+        font-size=18px;
+        border-radius=4px;
+    }
+
+
+</style>
+
+
+<div class="container" id="cont1">
+<form method ="POST" action= "">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{obj}}"?</p>
+    
+    <a href="{{request.META.HTTP_REFERER}}" class="btn">Go Back</a>
+    <input type="submit" value="Confirm" />
+
+
+</form>
+</div>
+{% endblock content%}

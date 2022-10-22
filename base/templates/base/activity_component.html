@@ -1,0 +1,66 @@
+
+<style>
+    .room-container {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    a:hover{
+        color: white;
+        background-color: drakgrey;
+    }
+   
+    a:visited{
+        background-color: lightslategrey;
+    }
+    
+    
+    a:active{
+        background-colour: lightslategrey;
+    }
+    .btn{
+        background-color: slategrey;
+        padding: 6px;
+        border:none;
+        cursor=pointer;
+        font-size=18px;
+        border-radius=4px;
+    }
+
+
+</style>
+
+<div class="container" id="cont1">
+
+
+
+<h3> Recent Activity </h3>
+<hr>
+{% for message in room_messages%}
+    <div>
+        <small<a href="{% url 'user-profile'  message.user.id %}" >@{{message.user}}</a> {{message.created|timesince}}</small>
+        <small> replied to "{{message.room}}" </small>
+
+        <p> {{message}}</p>
+        {% if request.user == message.user%}
+        </div>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            
+            
+            <a href ="{% url 'delete-message' message.id  %}" class="btn"> Delete</a>
+        </div>
+        {% endif %}
+        <hr>
+
+
+    </div>
+
+
+{% endfor%}
+</div>
+
+

@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+
+{% block content%}
+
+
+<style>
+   
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    a:hover{
+        color: white;
+        background-color: black;
+    }
+   
+    a:visited{
+        background-color: lightslategrey;
+    }
+    
+    
+    a:active{
+        background-colour: lightslategrey;
+    }
+    .btn{
+        background-color: slategrey;
+        padding: 6px;
+        border:none;
+        cursor=pointer;
+        font-size=18px;
+        border-radius=4px;
+    }
+
+
+</style>
+
+<div class="container" id="cont1">
+
+      {% if page == 'login' %}
+      <div>
+         <form method="POST" action="">
+            {% csrf_token %}
+        
+            <label> Username: </label>
+            <input type="text" name="username" placeholder="Enter Username" />
+            <label> Password: </label>
+            <input type="password" name="password" placeholder="Enter Password" />
+            <input type="submit" value="Login" />
+
+         </form>
+
+         <p> have you signed up yet? </p>
+         <a href="{% url 'register'%}" class="btn"> Sign up </a>
+
+
+      </div>
+
+      {%else%}
+      <div>
+           <form method="POST" action="">
+               {% csrf_token %}
+               {{form.as_p}}
+        
+       
+              <input type="submit" value="Register" />
+
+            </form>
+            <p> Already signed up yet? </p>
+            <a href="{% url 'login'%}" class="btn">Login</a>
+
+      </div>
+
+     {% endif %}
+</div>
+{% endblock content %}
